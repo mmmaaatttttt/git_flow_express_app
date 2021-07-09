@@ -12,6 +12,13 @@ app.get("/random", (req, res) => {
   return res.json({ random });
 });
 
+app.get("/random/:min/:max", (req, res) => {
+  const numMin = Number(req.params.min);
+  const numMax = Number(req.params.max);
+  const randomBetweenMinAndMax = Math.floor(numMin + Math.random() * (numMax - numMin));
+  return res.json({ random: randomBetweenMinAndMax });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}!`);
 });
